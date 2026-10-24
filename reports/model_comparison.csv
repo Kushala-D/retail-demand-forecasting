@@ -1,0 +1,4 @@
+Model,MAE,RMSE,WAPE (%)
+7-day seasonal naive baseline,899.81,1876.62,3.05
+Decision Tree (lag_7 only),1156.49,1971.39,3.91
+Random Forest,639.78,1093.93,2.17

@@ -1,0 +1,22 @@
+
+# Python environment
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Raw dataset - do not upload
+data/raw/
+data/train.csv
+data/test.csv
+
+# Local model artifacts
+models/*.joblib
+models/*.pkl
+
+# OS files
+.DS_Store
+Thumbs.db
