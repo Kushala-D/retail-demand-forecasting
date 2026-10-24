@@ -44,13 +44,37 @@ A chronological train-test split was used, with the later dates reserved for tes
 
 ## Preliminary Results
 
+## Model Evaluation and Rolling Backtesting
+
+Models were evaluated using a chronological train-test split and four successive 90-day rolling-origin test windows.
+
+### Initial Test Results
+
 | Model | MAE | RMSE | WAPE |
 |---|---:|---:|---:|
 | Seven-day seasonal naive | 899.81 | 1,876.62 | 3.05% |
 | Decision Tree (lag 7 only) | 1,156.49 | 1,971.39 | 3.91% |
 | Random Forest | 639.78 | 1,093.93 | 2.17% |
 
-These results are preliminary and reflect a rolling one-day-ahead setup using observed historical sales for lag features. They should be revalidated before being treated as final performance claims.
+### Rolling Backtesting Results
+
+Average metrics across four 90-day test windows:
+
+| Metric | Random Forest | Seasonal-naive baseline |
+|---|---:|---:|
+| MAE | 636.30 | 899.81 |
+| RMSE | 1,089.19 | 1,800.81 |
+| WAPE | 2.17% | 3.16% |
+
+The Random Forest outperformed the seasonal-naive baseline on MAE, RMSE, and WAPE in all four test windows. Its average window-level MAE was approximately 29.3% lower than the baseline.
+
+### Forecasting Assumptions and Limitations
+
+This experiment forecasts aggregate daily sales across all stores and items. The rolling one-day-ahead evaluation uses lag and rolling features computed from observed historical sales. It assumes actual sales become available before each subsequent prediction.
+
+These results do not establish performance for a fixed multi-day forecast horizon where actual sales are unavailable throughout the forecast period. Further work should evaluate alternative forecast horizons, compare performance across individual stores and items, and investigate forecast errors by season and weekday.
+
+The metrics are experimental results on the selected historical period and should not be interpreted as guaranteed future performance.
 
 ## Tools and Technologies
 
